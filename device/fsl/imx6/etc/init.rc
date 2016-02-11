@@ -385,6 +385,12 @@ on boot
 	chmod 0770 /data/misc/wifi
 	chmod 0660 /data/misc/wifi/wpa_supplicant.conf
 # Prepare for bluetooth
+#	chmod 0660 /dev/ttymxc3
+#	chown bluetooth_net_bt_stack /dev/ttymxc3
+#	chmod 0660 /sys/class/rfkill/rfkill0/state
+#	chmod 0660 /sys/class/rfkill/rfkill0/type
+#	chown bluetooth_net_bt_stack /sys/class/rfkill/rfkill0/state
+#	chown bluetooth_net_bt_stack /sys/class/rfkill/rfkill0/type
     chmod 665 /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     write /sys/class/rfkill/rfkill0/state 0
