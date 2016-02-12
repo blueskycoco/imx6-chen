@@ -225,7 +225,7 @@ int userial_vendor_open(tUSERIAL_CFG *p_cfg)
         return -1;
     }
 
-    ALOGI("userial vendor open: opening %s %d", vnd_userial.port_name,baud);
+    ALOGI("userial vendor open: opening %s %d %d", vnd_userial.port_name,baud,p_cfg->baud);
 
     if ((vnd_userial.fd = open(vnd_userial.port_name, O_RDWR)) == -1)
     {
@@ -237,7 +237,9 @@ int userial_vendor_open(tUSERIAL_CFG *p_cfg)
 
     tcgetattr(vnd_userial.fd, &vnd_userial.termios);
     cfmakeraw(&vnd_userial.termios);
-    vnd_userial.termios.c_cflag |= (CRTSCTS | stop_bits);
+    vnd_userial.termios.c_cflag |= (/*CRTSCTS | */stop_bits);
+    vnd_userial.termios.c_cflag &= ~(CRTSCTS);
+    ALOGI("remove CRTSCTS"); 
     tcsetattr(vnd_userial.fd, TCSANOW, &vnd_userial.termios);
     tcflush(vnd_userial.fd, TCIOFLUSH);
 

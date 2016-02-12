@@ -25,7 +25,7 @@ on boot
     # Set GPS serial and reset GPIO pin
     setprop ro.kernel.android.gps /dev/athrnmea
     setprop persist.gps.oacmode @f
-    symlink /dev/ttymxc2 /dev/gpsdevice
+    symlink /dev/ttymxc3 /dev/gpsdevice
     write /sys/class/gpio/export 60
     write /sys/class/gpio/gpio60/direction "out"
     write /sys/class/gpio/gpio60/value 1
