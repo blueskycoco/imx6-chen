@@ -181,7 +181,7 @@ int userial_vendor_open(tUSERIAL_CFG *p_cfg)
     uint8_t data_bits;
     uint16_t parity;
     uint8_t stop_bits;
-
+    uint8_t buf[]={1,2,3,4,5,6,7,8,9,10};
     vnd_userial.fd = -1;
 
     if (!userial_to_tcio_baud(p_cfg->baud, &baud))
@@ -237,7 +237,7 @@ int userial_vendor_open(tUSERIAL_CFG *p_cfg)
 
     tcgetattr(vnd_userial.fd, &vnd_userial.termios);
     cfmakeraw(&vnd_userial.termios);
-    vnd_userial.termios.c_cflag |= (/*CRTSCTS | */stop_bits);
+    vnd_userial.termios.c_cflag |= (CRTSCTS | stop_bits);
     vnd_userial.termios.c_cflag &= ~(CRTSCTS);
     ALOGI("remove CRTSCTS"); 
     tcsetattr(vnd_userial.fd, TCSANOW, &vnd_userial.termios);
@@ -257,7 +257,8 @@ int userial_vendor_open(tUSERIAL_CFG *p_cfg)
 #endif
 
     ALOGI("device fd = %d open", vnd_userial.fd);
-
+    //write(vnd_userial.fd,buf,10);
+    //ALOGI("Send over");
     return vnd_userial.fd;
 }
 
