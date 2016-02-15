@@ -237,8 +237,8 @@ int userial_vendor_open(tUSERIAL_CFG *p_cfg)
 
     tcgetattr(vnd_userial.fd, &vnd_userial.termios);
     cfmakeraw(&vnd_userial.termios);
-    vnd_userial.termios.c_cflag |= (CRTSCTS | stop_bits);
-    vnd_userial.termios.c_cflag &= ~(CRTSCTS);
+    vnd_userial.termios.c_cflag |= (/*CRTSCTS | */stop_bits);
+    //vnd_userial.termios.c_cflag &= ~(CRTSCTS);
     ALOGI("remove CRTSCTS"); 
     tcsetattr(vnd_userial.fd, TCSANOW, &vnd_userial.termios);
     tcflush(vnd_userial.fd, TCIOFLUSH);

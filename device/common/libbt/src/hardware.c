@@ -772,7 +772,7 @@ void hw_config_cback(void *p_mem)
                 userial_vendor_set_baud( \
                     line_speed_to_userial_baud(UART_TARGET_BAUD_RATE) \
                 );
-
+		ALOGI("change baud done");
 #if (USE_CONTROLLER_BDADDR == TRUE)
                 if ((is_proceeding = hw_config_read_bdaddr(p_buf)) == TRUE)
                     break;
