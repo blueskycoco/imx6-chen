@@ -99,6 +99,10 @@ on boot
     setprop ro.lightsensor.threshold  20
 
     # No bluetooth hardware present
+    chmod 0220 /proc/bluetooth/sleep/lpm
+    chmod 0220 /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
     setprop wlan.interface wlan0
 # Prepare for wifi
 	chmod 777 /data/misc/keystore

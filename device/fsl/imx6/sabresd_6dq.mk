@@ -43,6 +43,7 @@ PRODUCT_COPY_FILES += \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 endif
 PRODUCT_COPY_FILES += \
-	device/fsl/sabresd_6dq/bcmdhd.ko:system/lib/modules/bcmdhd.ko
+	device/fsl/sabresd_6dq/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
+	device/fsl/sabresd_6dq/bcm2076b1.hcd:system/vendor/firmware/bcm2076b1.hcd
 PRODUCT_COPY_FILES += \
 	device/samsung/tuna/bcmdhd.cal:system/vendor/firmware/bcmdhd.cal
