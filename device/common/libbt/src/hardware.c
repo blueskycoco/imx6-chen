@@ -617,6 +617,7 @@ void hw_config_cback(void *p_mem)
                     line_speed_to_userial_baud(UART_TARGET_BAUD_RATE) \
                 );
 
+                ms_delay(50);
                 /* read local name */
                 UINT16_TO_STREAM(p, HCI_READ_LOCAL_NAME);
                 *p = 0; /* parameter length */
@@ -772,6 +773,8 @@ void hw_config_cback(void *p_mem)
                 userial_vendor_set_baud( \
                     line_speed_to_userial_baud(UART_TARGET_BAUD_RATE) \
                 );
+                ms_delay(50);
+
 		ALOGI("change baud done");
 #if (USE_CONTROLLER_BDADDR == TRUE)
                 if ((is_proceeding = hw_config_read_bdaddr(p_buf)) == TRUE)
